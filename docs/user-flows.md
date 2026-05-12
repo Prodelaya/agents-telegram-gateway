@@ -10,7 +10,7 @@ Telegram:
 
 Gateway:
 
-1. resolves `/home/prodelaya/proyectos/JobMatchRAG`;
+1. resolves `JobMatchRAG` under the configured workspace base directory;
 2. starts or reuses an OpenCode runtime in that directory;
 3. creates a new session;
 4. sets `gentle-orchestrator` as the agent;
@@ -22,7 +22,7 @@ Telegram response:
 ✅ Project opened
 
 Project: JobMatchRAG
-Path: /home/prodelaya/proyectos/JobMatchRAG
+Path: /absolute/path/to/projects/JobMatchRAG
 Agent: gentle-orchestrator
 Session: new
 ```

@@ -3,18 +3,19 @@
 ## Setup
 
 ```bash
-pnpm install
+corepack pnpm install
 cp .env.example .env
 cp config/agents-telegram-gateway.example.yaml config/agents-telegram-gateway.local.yaml
-pnpm dev -- --config config/agents-telegram-gateway.local.yaml
+$EDITOR config/agents-telegram-gateway.local.yaml # set absolute workspace/data paths
+corepack pnpm dev -- --config config/agents-telegram-gateway.local.yaml
 ```
 
 ## Verify OpenCode manually
 
-Inside WSL:
+Inside a project under your configured workspace root:
 
 ```bash
-cd /home/prodelaya/proyectos/SomeProject
+cd ~/projects/SomeProject
 opencode
 ```
 
@@ -23,7 +24,7 @@ Confirm that `gentle-orchestrator` is available.
 Then test a managed server:
 
 ```bash
-cd /home/prodelaya/proyectos/SomeProject
+cd ~/projects/SomeProject
 OPENCODE_CONFIG_CONTENT='{"default_agent":"gentle-orchestrator"}' \
 OPENCODE_SERVER_PASSWORD='local-dev' \
 opencode serve --hostname 127.0.0.1 --port 4101
@@ -34,8 +35,8 @@ Open the local API docs exposed by your installed OpenCode version and align `ad
 ## Testing
 
 ```bash
-pnpm test
-pnpm typecheck
+corepack pnpm test
+corepack pnpm typecheck
 ```
 
 ## Implementation order

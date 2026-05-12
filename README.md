@@ -2,7 +2,7 @@
 
 Private Telegram gateway for controlling local coding agents from a phone.
 
-The first supported adapter is **OpenCode**, designed for a WSL workstation running **Gentle-AI**, `gentle-orchestrator`, and persistent memory through **Engram MCP**.
+The first supported adapter is **OpenCode**, designed for a local workstation running **Gentle-AI**, `gentle-orchestrator`, and persistent memory through **Engram MCP**.
 
 This project is intentionally **not** a Telegram bot with its own model. Telegram is only the remote keyboard/screen. The local coding agent remains the real worker.
 
@@ -13,7 +13,7 @@ agents-telegram-gateway
   ↓
 Agent adapter: OpenCode
   ↓
-OpenCode running inside WSL in the selected project directory
+OpenCode running locally in the selected project directory
   ↓
 gentle-orchestrator + Gentle-AI config + Engram MCP + local files
 ```
@@ -56,30 +56,26 @@ It is not:
 - a public HTTP API exposed to the internet;
 - a generic shell-over-Telegram tool.
 
-## Personal target environment for the initial MVP
+## Target environment for the initial MVP
 
-The first implementation target is:
+The architecture is workstation-agnostic: configure a workspace root, keep the local agent runtime loopback-only, and allow Telegram access only for trusted user IDs.
+
+The first tested environment is:
 
 ```text
 OS/runtime: WSL Ubuntu
-User: prodelaya
-Workspace root: /home/prodelaya/proyectos
+Workspace root: configurable, for example /home/user/projects
 Agent: OpenCode
 Gentle-AI agent: gentle-orchestrator
 Memory: Engram MCP configured by Gentle-AI
 Transport: Telegram bot, allowlisted to a single Telegram user id
 ```
 
-The Windows-visible path is:
+WSL-specific example:
 
 ```text
-\\wsl.localhost\Ubuntu\home\prodelaya\proyectos
-```
-
-Inside WSL, all logic should use:
-
-```bash
-/home/prodelaya/proyectos
+Windows-visible path: \\wsl.localhost\Ubuntu\home\user\projects
+WSL path: /home/user/projects
 ```
 
 ## Core user experience
@@ -88,10 +84,10 @@ Inside WSL, all logic should use:
 /open JobMatchRAG
 ```
 
-Creates a new OpenCode session in:
+Creates a new OpenCode session in the configured workspace root, for example:
 
 ```bash
-/home/prodelaya/proyectos/JobMatchRAG
+/home/user/projects/JobMatchRAG
 ```
 
 using `gentle-orchestrator`.
@@ -153,10 +149,11 @@ This makes it possible to offer it later as a Gentle-AI community integration wi
 ```bash
 git clone git@github.com:Prodelaya/agents-telegram-gateway.git
 cd agents-telegram-gateway
-pnpm install
+corepack pnpm install
 cp .env.example .env
 cp config/agents-telegram-gateway.example.yaml config/agents-telegram-gateway.local.yaml
-pnpm dev -- --config config/agents-telegram-gateway.local.yaml
+$EDITOR config/agents-telegram-gateway.local.yaml # set absolute workspace/data paths
+corepack pnpm dev -- --config config/agents-telegram-gateway.local.yaml
 ```
 
 Required environment variables:
@@ -165,23 +162,6 @@ Required environment variables:
 TELEGRAM_BOT_TOKEN=...
 ALLOWED_TELEGRAM_USER_IDS=123456789
 OPENCODE_SERVER_PASSWORD=change-me
-```
-
-## Uploading this scaffold to GitHub
-
-```bash
-cd agents-telegram-gateway
-git init
-git add .
-git commit -m "Initial agents Telegram gateway architecture"
-gh repo create Prodelaya/agents-telegram-gateway --private --source=. --remote=origin --push
-```
-
-or, after creating the repository manually on GitHub:
-
-```bash
-git remote add origin git@github.com:Prodelaya/agents-telegram-gateway.git
-git push -u origin main
 ```
 
 ## Documentation

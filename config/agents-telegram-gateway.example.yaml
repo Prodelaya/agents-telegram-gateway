@@ -1,13 +1,15 @@
 app:
   name: agents-telegram-gateway
-  dataDir: /home/prodelaya/.local/share/agents-telegram-gateway
+  # Use an absolute path. Shell-style ~ expansion is not applied by YAML parsing.
+  dataDir: /absolute/path/to/.local/share/agents-telegram-gateway
 
 telegram:
   botTokenEnv: TELEGRAM_BOT_TOKEN
   allowedUserIdsEnv: ALLOWED_TELEGRAM_USER_IDS
 
 workspace:
-  baseDir: /home/prodelaya/proyectos
+  # Use an absolute path to the workspace root that contains allowlisted projects.
+  baseDir: /absolute/path/to/projects
   discovery:
     maxDepth: 3
     markers:

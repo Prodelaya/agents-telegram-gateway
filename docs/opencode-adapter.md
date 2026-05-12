@@ -32,7 +32,7 @@ spawn("opencode", ["serve", "--hostname", "127.0.0.1", "--port", String(port)], 
 This should behave like running:
 
 ```bash
-cd /home/prodelaya/proyectos/SomeProject
+cd ~/projects/SomeProject
 opencode
 ```
 

@@ -53,7 +53,7 @@ When the user runs:
 
 the gateway:
 
-1. resolves the project under `/home/prodelaya/proyectos`;
+1. resolves the project under the configured workspace base directory;
 2. starts `opencode serve` with `cwd` set to the project directory;
 3. injects or enforces `default_agent=gentle-orchestrator`;
 4. creates a new OpenCode session;
@@ -65,7 +65,7 @@ the gateway:
 All user-provided project names or paths are treated as relative to the configured base directory.
 
 ```text
-baseDir = /home/prodelaya/proyectos
+baseDir = /absolute/path/to/projects
 ```
 
 The gateway must use `realpath` and reject any path that does not remain inside the base directory.
@@ -76,7 +76,7 @@ Examples:
 /open JobMatchRAG                 allowed
 /open clientes/odoo/module-x      allowed
 /open ../../.ssh                  rejected
-/open /home/prodelaya/.config     rejected
+/open ~/.config                   rejected
 /open /mnt/c/Users/...            rejected
 ```
 
@@ -138,7 +138,7 @@ For an already-running TUI, the recommended approach is to start OpenCode throug
 Example wrapper behavior:
 
 ```bash
-cd /home/prodelaya/proyectos/JobMatchRAG
+cd ~/projects/JobMatchRAG
 OPENCODE_CONFIG_CONTENT='{"default_agent":"gentle-orchestrator"}' \
   opencode . --agent gentle-orchestrator --hostname 127.0.0.1 --port 4201
 ```

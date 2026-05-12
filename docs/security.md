@@ -4,7 +4,7 @@ This gateway can become a remote control for a workstation. Treat it as sensitiv
 
 ## Required controls
 
-1. Run inside WSL as the normal user, not root.
+1. Run on the local workstation as a normal user, not root/admin.
 2. Allowlist Telegram user ids.
 3. Keep OpenCode listening only on `127.0.0.1`.
 4. Never expose OpenCode server ports to the public internet.
@@ -29,10 +29,10 @@ Messages from all other users should be ignored or rejected.
 
 ## Path safety
 
-All project paths must resolve under:
+All project paths must resolve under the configured workspace base directory, for example:
 
 ```bash
-/home/prodelaya/proyectos
+/absolute/path/to/projects
 ```
 
 Never trust Telegram input as a path.
@@ -54,7 +54,7 @@ The gateway must not silently approve tools.
 Recommended:
 
 ```text
-Telegram Bot API ← outbound connection from WSL
+Telegram Bot API ← outbound connection from local workstation
 OpenCode API ← localhost only
 ```
 

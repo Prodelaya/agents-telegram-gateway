@@ -2,7 +2,7 @@
 
 ## User goal
 
-Control the OpenCode instance running on a desktop workstation from a phone, using Telegram only as the communication medium.
+Control the OpenCode instance running on a local workstation from a phone, using Telegram only as the communication medium.
 
 The goal is to be able to ask OpenCode to work in a concrete project directory while preserving the local context:
 
@@ -16,8 +16,8 @@ The goal is to be able to ask OpenCode to work in a concrete project directory w
 
 ## Hard requirements
 
-1. The gateway runs inside WSL.
-2. Projects are located under `/home/prodelaya/proyectos`.
+1. The gateway runs on the same local workstation as the coding agent.
+2. Projects are located under a configured workspace base directory.
 3. The gateway may open any project under that base directory, but never outside it.
 4. `/open <project>` opens OpenCode in that project directory.
 5. A new session is created by default.

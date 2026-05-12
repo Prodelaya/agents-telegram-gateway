@@ -1,12 +1,12 @@
 # Roadmap
 
-## v0.1 — Personal MVP
+## v0.1 — Local workstation MVP
 
-Goal: usable from a phone for the target WSL/OpenCode/Gentle-AI workflow.
+Goal: usable from a phone for a local OpenCode/Gentle-AI workstation workflow.
 
 - [ ] Telegram polling transport
 - [ ] user id allowlist
-- [ ] WSL project discovery under `/home/prodelaya/proyectos`
+- [ ] project discovery under configured `workspace.baseDir`
 - [ ] safe project resolver with `realpath`
 - [ ] managed OpenCode runtime per project
 - [ ] force `gentle-orchestrator`

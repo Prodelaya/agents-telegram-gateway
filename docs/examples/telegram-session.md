@@ -19,7 +19,7 @@ Gateway:
 ✅ Project opened
 
 Project: JobMatchRAG
-Path: /home/prodelaya/proyectos/JobMatchRAG
+Path: /absolute/path/to/projects/JobMatchRAG
 Agent: gentle-orchestrator
 Session: ses_123
 ```

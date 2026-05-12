@@ -36,15 +36,17 @@ Telegram is the remote keyboard/screen. The local coding agent is the worker.
 
 ## Target Workflow
 
-Optimize first for:
+Optimize first for a local workstation with a configured workspace root:
 
-- WSL Ubuntu;
-- workspace root: `/home/prodelaya/proyectos`;
+- platform: Linux, macOS, or WSL where OpenCode and Gentle-AI are available;
+- workspace root: configured through `workspace.baseDir`;
 - OpenCode as the first local agent adapter;
 - Gentle-AI configured OpenCode;
 - `gentle-orchestrator` as the default OpenCode agent;
 - Engram MCP as persistent memory;
 - Telegram as transport only.
+
+The first validated environment may be WSL Ubuntu, but the architecture and docs must stay workstation-agnostic.
 
 Do not hardcode the architecture so tightly that future adapters become impossible.
 
