@@ -1,0 +1,23 @@
+{
+  "name": "@agents-telegram-gateway/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "agents-telegram-gateway": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@agents-telegram-gateway/adapter-opencode": "workspace:*",
+    "@agents-telegram-gateway/core": "workspace:*",
+    "@agents-telegram-gateway/transport-telegram": "workspace:*",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.7",
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

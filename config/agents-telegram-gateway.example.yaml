@@ -1,0 +1,39 @@
+app:
+  name: agents-telegram-gateway
+  dataDir: /home/prodelaya/.local/share/agents-telegram-gateway
+
+telegram:
+  botTokenEnv: TELEGRAM_BOT_TOKEN
+  allowedUserIdsEnv: ALLOWED_TELEGRAM_USER_IDS
+
+workspace:
+  baseDir: /home/prodelaya/proyectos
+  discovery:
+    maxDepth: 3
+    markers:
+      - .git
+      - opencode.json
+      - opencode.jsonc
+      - AGENTS.md
+      - package.json
+      - pyproject.toml
+
+agents:
+  defaultAdapter: opencode
+  defaultAgent: gentle-orchestrator
+
+opencode:
+  host: 127.0.0.1
+  portRange:
+    from: 4100
+    to: 4199
+  serverPasswordEnv: OPENCODE_SERVER_PASSWORD
+  command: opencode
+  startupTimeoutMs: 15000
+  configOverlay:
+    default_agent: gentle-orchestrator
+
+telegramFormatting:
+  maxTextLength: 3500
+  sendLongCodeAsFile: true
+  sendDiffAsPatch: true
