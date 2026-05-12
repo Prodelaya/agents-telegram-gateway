@@ -258,4 +258,7 @@ function mapPermissionAnswer(answer: PermissionAnswerInput["answer"]): Record<st
     case "deny":
       return { response: "deny", remember: false };
   }
+
+  const exhaustive: never = answer;
+  throw new Error(`Unsupported permission answer: ${exhaustive}`);
 }

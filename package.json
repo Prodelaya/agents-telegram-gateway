@@ -7,7 +7,7 @@
   "scripts": {
     "build": "pnpm -r build",
     "dev": "tsx packages/cli/src/index.ts",
-    "typecheck": "pnpm -r typecheck",
+    "typecheck": "corepack pnpm --filter @agents-telegram-gateway/core build && corepack pnpm --filter @agents-telegram-gateway/adapter-opencode build && corepack pnpm --filter @agents-telegram-gateway/transport-telegram build && corepack pnpm -r typecheck",
     "test": "vitest run",
     "lint": "eslint ."
   },
